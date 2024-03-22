@@ -136,6 +136,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+ganmimarlik-venv
 
 # Spyder project settings
 .spyderproject
