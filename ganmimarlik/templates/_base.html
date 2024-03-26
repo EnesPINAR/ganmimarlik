@@ -29,7 +29,7 @@
                     start: 0,
                     end: 'max',
                     scrub: 2,
-                    pin: true,
+                    pin: false,
                 }
 
             });
@@ -37,6 +37,9 @@
             const banner = document.querySelector(".banner");
 
             textLineAnim
+                .from(leftText, {
+                    x: 32 + 'px'
+                })
                 .to(leftText, {
                     x: banner.offsetWidth / 2 - leftText[0].offsetWidth / 2 + 'px'
                 });
@@ -98,7 +101,7 @@
         </div>
     </div>
 </nav>
-<div class="container mx-auto mt-[69px]">
+<div class="mx-auto mt-[69px]">
     {% block content %}
     {% endblock content %}
 </div>
