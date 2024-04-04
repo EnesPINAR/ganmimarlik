@@ -18,36 +18,58 @@
             // gsap code here!
             const leftText = document.querySelectorAll(".banner-text-left");
             const rightText = document.querySelectorAll(".banner-text-right");
+            const banner = document.querySelector(".banner");
 
-            const textLineAnim = gsap.timeline({
+            const leftAnimateTexts = document.querySelectorAll('.animate-text-left');
 
+            const bannerTextLineAnim = gsap.timeline({
                 defaults: {
-                    duration: 1,
+                    duration: 0.5,
                     ease: 'power1.inOut',
                 },
                 scrollTrigger: {
                     start: 0,
                     end: 'max',
                     scrub: 2,
-                    pin: false,
+                    pin: true,
                     invalidateOnRefresh: true,
                     once: true,
+                    markers: true,
                 }
-
             });
-
-            const banner = document.querySelector(".banner");
-
-            textLineAnim
+            bannerTextLineAnim
                 .to(leftText, {
-                    x: banner.offsetWidth / 2 - leftText[0].offsetWidth / 2 + 'px'
+                    x: banner.offsetWidth / 2 - leftText[0].offsetWidth / 2 + 'px',
                 });
-
-            textLineAnim
+            bannerTextLineAnim
                 .to(rightText, {
                         x: -(banner.offsetWidth / 2 - rightText[0].offsetWidth / 2) + 'px'
                     },
                     '<');
+
+            const bodyTextLineAnim = gsap.timeline({
+                defaults: {
+                    duration: 1,
+                    ease: 'power1.inOut',
+                },
+                scrollTrigger: {
+                    start: "top bottom",
+                    end: 'max',
+                    scrub: 2,
+                    pin: true,
+                    invalidateOnRefresh: true,
+                    once: true,
+                    markers: true,
+                }
+            });
+            leftAnimateTexts.forEach((e) => {
+                bodyTextLineAnim
+                .fromTo(e, {
+                    x: -innerWidth / 2 + 'px',
+                }, {
+                    x: 0 + 'px'
+                })
+            })
         });
 
     </script>
