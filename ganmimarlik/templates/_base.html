@@ -23,7 +23,7 @@
             const rightText = document.querySelectorAll(".banner-text-right");
             const banner = document.querySelector(".banner");
 
-            const leftAnimateTexts = document.querySelectorAll('.animate-text-left');
+            const leftAnimateTexts = document.querySelectorAll('.animate-text');
 
             const bannerTextLineAnim = gsap.timeline({
                 defaults: {
@@ -37,7 +37,7 @@
                     pin: banner,
                     invalidateOnRefresh: true,
                     once: false,
-                    markers: true,
+                    markers: false,
                 }
             });
             bannerTextLineAnim
@@ -52,26 +52,25 @@
 
             const bodyTextLineAnim = gsap.timeline({
                 defaults: {
-                    duration: 1,
+                    duration: 2,
                     ease: 'power1.inOut',
                 },
-                scrollTrigger: {
-                    start: "top bottom",
-                    end: 'max',
-                    scrub: 2,
-                    pin: false,
-                    invalidateOnRefresh: true,
-                    once: true,
-                    markers: true,
-                }
             });
             leftAnimateTexts.forEach((e) => {
                 bodyTextLineAnim
-                .fromTo(e, {
-                    x: -innerWidth / 2 + 'px',
-                }, {
-                    x: 0 + 'px'
-                })
+                    .from(e, {
+                        scrollTrigger: {
+                            trigger: e,
+                            start: "top bottom",
+                            end: 'center bottom',
+                            scrub: 2,
+                            pin: false,
+                            invalidateOnRefresh: true,
+                            once: true,
+                            markers: false,
+                        },
+                        x: () => e.classList.contains('from-left') ? -window.innerWidth / 2 + 'px' : (e.classList.contains('from-right') ? window.innerWidth / 2 + 'px' : -window.innerWidth / 2 + 'px')
+                    })
             })
         });
 
@@ -82,9 +81,9 @@
     <link rel="stylesheet" href="{% static 'style/lineicons.css' %}">
     {% endcompress %}
 </head>
-<body class='bg-gray-100'>
-<nav class="fixed w-full z-20 top-0 start-0 backdrop-blur h-[65px]">
-    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+<body class='bg-gray-100 overflow-x-hidden'>
+<nav class="fixed w-full z-20 top-0 start-0 h-[65px] bg-gray-50">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 bg-gray-50">
         <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
             <img src="{% static 'img/logos/ganmimarlik.svg' %}" class="h-8" alt="Ganmimarlık Logo">
         </a>
