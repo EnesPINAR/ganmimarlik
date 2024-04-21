@@ -31,7 +31,7 @@
                     ease: 'power1.inOut',
                 },
                 scrollTrigger: {
-                    start: '-65px top',
+                    start: 'top top',
                     end: 'center top',
                     scrub: 1,
                     pin: banner,
@@ -82,13 +82,14 @@
     {% endcompress %}
 </head>
 <body class='bg-gray-100 overflow-x-hidden'>
-<nav class="fixed w-full z-20 top-0 start-0 h-[65px] bg-gray-50">
-    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 bg-gray-50">
+<nav class="fixed w-full z-20 top-0 start-0 h-[65px] bg-white/30 backdrop-blur-sm">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4" id='menu'>
         <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
             <img src="{% static 'img/logos/ganmimarlik.svg' %}" class="h-8" alt="Ganmimarlık Logo">
         </a>
         <div class="flex space-x-3 md:space-x-0 rtl:space-x-reverse">
-            <button data-collapse-toggle="navbar-sticky" type="button"
+            <button id='toggleMenu'
+                    data-collapse-toggle="navbar-sticky" type="button"
                     class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                     aria-controls="navbar-sticky" aria-expanded="false">
                 <span class="sr-only">Open main menu</span>
@@ -122,10 +123,16 @@
         </div>
     </div>
 </nav>
-<div class="mx-auto mt-[65px]">
+<div class="mx-auto">
     {% block content %}
     {% endblock content %}
 </div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+<script defer>
+    console.log(toggleMenu)
+    document.getElementById('toggleMenu').addEventListener("click", function() {
+        document.getElementById('menu').classList.toggle('bg-gray-50');
+      });
+</script>
 </html>

@@ -104,9 +104,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "tr-TR"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Europe/Istanbul"
 
 USE_I18N = True
 
@@ -135,8 +135,5 @@ STATICFILES_FINDERS = (
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
-
-DJANGORESIZED_DEFAULT_FORCE_FORMAT = 'WEBP'
-DJANGORESIZED_DEFAULT_QUALITY = 100
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_URL = "/media/"
