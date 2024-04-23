@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     "django_resized",
     "main",
     "about",
+    'services',
+    'contact',
 ]
 
 MIDDLEWARE = [

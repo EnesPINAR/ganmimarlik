@@ -12,6 +12,42 @@
         }
     }
 </script>
+<script defer>
+    // use a script tag or an external JS file
+    document.addEventListener("DOMContentLoaded", (event) => {
+        gsap.registerPlugin(ScrollTrigger)
+        // gsap code here!
+        const leftText = document.querySelectorAll(".banner-text-left");
+        const rightText = document.querySelectorAll(".banner-text-right");
+        const banner = document.querySelector(".banner");
+
+        const bannerTextLineAnim = gsap.timeline({
+            defaults: {
+                duration: 1,
+                ease: 'power1.inOut',
+            },
+            scrollTrigger: {
+                start: 'top top',
+                end: 'center top',
+                scrub: 1,
+                pin: banner,
+                invalidateOnRefresh: true,
+                once: false,
+                markers: false,
+            }
+        });
+        bannerTextLineAnim
+            .to(leftText, {
+                x: banner.offsetWidth / 2 - leftText[0].offsetWidth / 2 + 'px',
+            });
+        bannerTextLineAnim
+            .to(rightText, {
+                    x: -(banner.offsetWidth / 2 - rightText[0].offsetWidth / 2) + 'px'
+                },
+                '<');
+    });
+
+</script>
 {% for bg in bannerBg %}
 <div class="banner h-[100vh] top-0 flex flex-col justify-center items-start overflow-hidden bg-contain md:bg-cover bg-no-repeat bg-center relative"
      style="background-image: url('{{ bg.image.url }}')">
