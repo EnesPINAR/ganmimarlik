@@ -1,5 +1,11 @@
 from django.shortcuts import render
+from . import models
+
 
 # Create your views here.
 def about(request):
-    return render(request, 'about.html')
+    hakkinda = models.Hakkinda.objects.first()
+    context = {
+        'hakkinda': hakkinda,
+    }
+    return render(request, 'about.html', context)

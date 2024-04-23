@@ -1775,6 +1775,10 @@ input:checked + .toggle-bg {
   max-height: 24rem;
 }
 
+.min-h-screen {
+  min-height: 100vh;
+}
+
 .w-1\/2 {
   width: 50%;
 }
