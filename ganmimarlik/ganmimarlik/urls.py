@@ -23,5 +23,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("main.urls")),
     path("about", include("about.urls")),
-    path('services', include("services.urls"))
+    path('services', include("services.urls")),
+    path('contact', include("contact.urls"))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # TODO Will change in production
