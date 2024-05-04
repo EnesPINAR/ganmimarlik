@@ -52,113 +52,115 @@
         <link rel="stylesheet" href="{% static 'style/lineicons.css' %}">
     {% endcompress %}
 </head>
-<body class='bg-gray-100 overflow-x-hidden'
+<body>
+<div class='bg-gray-100 overflow-x-hidden'
       style="background-image: url('{% static "img/background/paper-texture.jpg" %}'); background-repeat: repeat-y;">
-<nav class="fixed w-full z-20 top-0 start-0 h-[65px] bg-white/30 backdrop-blur-sm">
-    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4" id='menu'>
-        <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
-            <img src="{% static 'img/logos/ganmimarlik.svg' %}" class="h-8" alt="Ganmimarlık Logo">
-        </a>
-        <div class="flex space-x-3 md:space-x-0 rtl:space-x-reverse">
-            <button id='toggleMenu'
-                    data-collapse-toggle="navbar-sticky" type="button"
-                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                    aria-controls="navbar-sticky" aria-expanded="false">
-                <span class="sr-only">Open main menu</span>
-                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                     viewBox="0 0 17 14">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M1 1h15M1 7h15M1 13h15"/>
-                </svg>
-            </button>
-        </div>
-        <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
-            <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0">
-                <li>
-                    <a href="/home"
-                       class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-                       aria-current="page">Ana sayfa</a>
-                </li>
-                <li>
-                    <a href="/"
-                       class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Hizmetler</a>
-                </li>
-                <li>
-                    <a href="/about"
-                       class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Hakkımızda</a>
-                </li>
-                <li>
-                    <a href="/contact"
-                       class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">İletişim</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-<div class="mx-auto">
-    {% block content %}
-    {% endblock content %}
-</div>
-<footer class="bg-white dark:bg-gray-900">
-    <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
-        <div class="md:flex md:justify-between">
-            <div class="mb-6 md:mb-0">
-                <a href="/" class="flex items-center">
-                    <img src="{% static 'img/logos/ganmimarlik.svg' %}" class="h-8 me-3" alt="Gan Mimarlık Logo"/>
-                    <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Gan Mimarlık</span>
-                </a>
+    <nav class="fixed w-full z-20 top-0 start-0 h-[65px] bg-white/30 backdrop-blur-sm">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4" id='menu'>
+            <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <img src="{% static 'img/logos/ganmimarlik.svg' %}" class="h-8" alt="Ganmimarlık Logo">
+            </a>
+            <div class="flex space-x-3 md:space-x-0 rtl:space-x-reverse">
+                <button id='toggleMenu'
+                        data-collapse-toggle="navbar-sticky" type="button"
+                        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                        aria-controls="navbar-sticky" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                         viewBox="0 0 17 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M1 1h15M1 7h15M1 13h15"/>
+                    </svg>
+                </button>
             </div>
-            <ul class="text-gray-500 dark:text-gray-400 font-medium flex">
-                <li class="mr-4">
-                    <a href="/home" class="hover:underline">Ana Sayfa</a>
-                </li>
-                <li class="mr-4">
-                    <a href="/services" class="hover:underline">Hizmetler</a>
-                </li>
-                <li class="mr-4">
-                    <a href="/about" class="hover:underline">Hakkımızda</a>
-                </li>
-                <li>
-                    <a href="/contact" class="hover:underline">İletişim</a>
-                </li>
-            </ul>
+            <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+                <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0">
+                    <li>
+                        <a href="/home"
+                           class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                           aria-current="page">Ana sayfa</a>
+                    </li>
+                    <li>
+                        <a href="/"
+                           class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Hizmetler</a>
+                    </li>
+                    <li>
+                        <a href="/about"
+                           class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Hakkımızda</a>
+                    </li>
+                    <li>
+                        <a href="/contact"
+                           class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">İletişim</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8"/>
-        <div class="sm:flex sm:items-center sm:justify-between">
+    </nav>
+    <div class="mx-auto">
+        {% block content %}
+        {% endblock content %}
+    </div>
+    <footer class="bg-white dark:bg-gray-900">
+        <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+            <div class="md:flex md:justify-between">
+                <div class="mb-6 md:mb-0">
+                    <a href="/" class="flex items-center">
+                        <img src="{% static 'img/logos/ganmimarlik.svg' %}" class="h-8 me-3" alt="Gan Mimarlık Logo"/>
+                        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Gan Mimarlık</span>
+                    </a>
+                </div>
+                <ul class="text-gray-500 dark:text-gray-400 font-medium flex">
+                    <li class="mr-4">
+                        <a href="/home" class="hover:underline">Ana Sayfa</a>
+                    </li>
+                    <li class="mr-4">
+                        <a href="/services" class="hover:underline">Hizmetler</a>
+                    </li>
+                    <li class="mr-4">
+                        <a href="/about" class="hover:underline">Hakkımızda</a>
+                    </li>
+                    <li>
+                        <a href="/contact" class="hover:underline">İletişim</a>
+                    </li>
+                </ul>
+            </div>
+            <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8"/>
+            <div class="sm:flex sm:items-center sm:justify-between">
           <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="/"
                                                                                           class="hover:underline">Gan Mimarlık™</a>. Tüm Hakları saklıdır.
           </span>
-            <div class="flex mt-4 sm:justify-center sm:mt-0">
-                <a href="/" class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
-                    <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                         viewBox="0 0 8 19">
-                        <path fill-rule="evenodd"
-                              d="M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z"
-                              clip-rule="evenodd"/>
-                    </svg>
-                    <span class="sr-only">Facebook</span>
-                </a>
-                <a href="/" class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
-                    <svg class="w-4 h-4" aria-hidden="true"
-                         xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                         viewBox="0 0 24 24">
-                        <path d="M13.795 10.533 20.68 2h-3.073l-5.255 6.517L7.69 2H1l7.806 10.91L1.47 22h3.074l5.705-7.07L15.31 22H22l-8.205-11.467Zm-2.38 2.95L9.97 11.464 4.36 3.627h2.31l4.528 6.317 1.443 2.02 6.018 8.409h-2.31l-4.934-6.89Z"/>
-                    </svg>
-                    <span class="sr-only">X</span>
-                </a>
-                <a href="/" class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
-                    <svg class="w-4 h-4" aria-hidden="true"
-                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <path fill="currentColor" fill-rule="evenodd"
-                              d="M3 8a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8Zm5-3a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3H8Zm7.597 2.214a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2h-.01a1 1 0 0 1-1-1ZM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm-5 3a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z"
-                              clip-rule="evenodd"/>
-                    </svg>
-                    <span class="sr-only">X</span>
-                </a>
+                <div class="flex mt-4 sm:justify-center sm:mt-0">
+                    <a href="/" class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+                        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                             viewBox="0 0 8 19">
+                            <path fill-rule="evenodd"
+                                  d="M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z"
+                                  clip-rule="evenodd"/>
+                        </svg>
+                        <span class="sr-only">Facebook</span>
+                    </a>
+                    <a href="/" class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
+                        <svg class="w-4 h-4" aria-hidden="true"
+                             xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                             viewBox="0 0 24 24">
+                            <path d="M13.795 10.533 20.68 2h-3.073l-5.255 6.517L7.69 2H1l7.806 10.91L1.47 22h3.074l5.705-7.07L15.31 22H22l-8.205-11.467Zm-2.38 2.95L9.97 11.464 4.36 3.627h2.31l4.528 6.317 1.443 2.02 6.018 8.409h-2.31l-4.934-6.89Z"/>
+                        </svg>
+                        <span class="sr-only">X</span>
+                    </a>
+                    <a href="/" class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
+                        <svg class="w-4 h-4" aria-hidden="true"
+                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <path fill="currentColor" fill-rule="evenodd"
+                                  d="M3 8a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8Zm5-3a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3H8Zm7.597 2.214a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2h-.01a1 1 0 0 1-1-1ZM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm-5 3a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z"
+                                  clip-rule="evenodd"/>
+                        </svg>
+                        <span class="sr-only">X</span>
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
-</footer>
+    </footer>
+</div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 <script defer>
@@ -169,7 +171,7 @@
 <script defer>
     const anchors = Array.from(document.getElementsByTagName("a"));
     anchors.forEach((a) => {
-        if(a.href == window.location.href){
+        if (a.href == window.location.href) {
             const classToggle = (el, ...args) => {
                 args.map(e => el.classList.toggle(e))
             }
