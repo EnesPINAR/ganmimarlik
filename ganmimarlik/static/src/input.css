@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .vertical-writing-negative {
+        writing-mode: vertical-rl;
+        transform: rotate(-180deg);
+    }
+    .vertical-writing-positive {
+        writing-mode: vertical-rl;
+    }
+}

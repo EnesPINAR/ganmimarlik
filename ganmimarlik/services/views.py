@@ -2,7 +2,7 @@ from django.shortcuts import render
 from . import models
 # Create your views here.
 def architecture(request):
-    services = models.MimariServis.objects.all()
+    services = models.MimarlikServisi.objects.all()
     context = {
         'services': services,
         'isInterior': False,
