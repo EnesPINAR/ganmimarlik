@@ -175,3 +175,5 @@ cython_debug/
 node_modules
 ganmimarlik/static/CACHE/css/output.e8d497b2f995.css
 ganmimarlik/static/src/output.css
+ganmimarlik/*/migrations
+ganmimarlik/static/CACHE/*
