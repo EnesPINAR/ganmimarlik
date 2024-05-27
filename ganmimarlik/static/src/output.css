@@ -2764,6 +2764,10 @@ input:checked + .toggle-bg {
     flex-direction: row;
   }
 
+  .md\:flex-row-reverse {
+    flex-direction: row-reverse;
+  }
+
   .md\:justify-between {
     justify-content: space-between;
   }

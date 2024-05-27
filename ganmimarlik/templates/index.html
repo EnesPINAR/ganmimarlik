@@ -1,90 +1,103 @@
 {% extends "_base.html" %}
 
 {% block content %}
-{% load static %}
-<script defer>
-    window.onscroll = function() {scrollFunction()};
+    {% load static %}
+    <script defer>
+        window.onscroll = function () {
+            scrollFunction()
+        };
 
-    function scrollFunction() {
-    if (document.body.scrollTop > (window.innerHeight + 400) || document.documentElement.scrollTop > (window.innerHeight + 400)) {
-        document.querySelector('nav').classList.remove('bg-white/30')
-        document.querySelector('nav').classList.add('bg-gray-50')
-        }
-    }
-</script>
-<script defer>
-    // use a script tag or an external JS file
-    document.addEventListener("DOMContentLoaded", (event) => {
-        gsap.registerPlugin(ScrollTrigger)
-        // gsap code here!
-        const leftText = document.querySelectorAll(".banner-text-left");
-        const rightText = document.querySelectorAll(".banner-text-right");
-        const banner = document.querySelector(".banner");
-
-        const bannerTextLineAnim = gsap.timeline({
-            defaults: {
-                duration: 1,
-                ease: 'power1.inOut',
-            },
-            scrollTrigger: {
-                start: 'top top',
-                end: 'center top',
-                scrub: 1,
-                pin: banner,
-                invalidateOnRefresh: true,
-                once: false,
-                markers: false,
+        function scrollFunction() {
+            if (document.body.scrollTop > (window.innerHeight + 400) || document.documentElement.scrollTop > (window.innerHeight + 400)) {
+                document.querySelector('nav').classList.remove('bg-white/30')
+                document.querySelector('nav').classList.add('bg-gray-50')
             }
-        });
-        bannerTextLineAnim
-            .to(leftText, {
-                x: banner.offsetWidth / 2 - leftText[0].offsetWidth / 2 + 'px',
-            });
-        bannerTextLineAnim
-            .to(rightText, {
-                    x: -(banner.offsetWidth / 2 - rightText[0].offsetWidth / 2) + 'px'
-                },
-                '<');
-    });
+        }
+    </script>
+    <script defer>
+        // use a script tag or an external JS file
+        document.addEventListener("DOMContentLoaded", (event) => {
+            gsap.registerPlugin(ScrollTrigger)
+            // gsap code here!
+            const leftText = document.querySelectorAll(".banner-text-left");
+            const rightText = document.querySelectorAll(".banner-text-right");
+            const banner = document.querySelector(".banner");
 
-</script>
-{% for bg in bannerBg %}
-<div class="banner h-[100vh] top-0 flex flex-col justify-center items-start overflow-hidden bg-cover md:bg-cover bg-no-repeat bg-center relative"
-     style="background-image: url('{{ bg.image.url }}')">
-    <div class="w-full flex">
-        <p class="banner-text-left text-5xl md:text-8xl font-extrabold text-white text-shadow-sm shadow-black">Gan</p>
-    </div>
-    <div class="w-full flex justify-end">
-        <p class="banner-text-right text-5xl md:text-8xl font-extrabold text-white text-shadow-sm shadow-black">Mimarlık</p>
-    </div>
-    <div class="absolute left-1/2 -translate-x-1/2 bottom-4 flex flex-col items-center text-2xlç text-white text-shadow-sm shadow-black">
-        <p class="mb-4">Daha fazlası için kaydır.</p>
-        <i class="lni lni-arrow-down animate-bounce"></i>
-    </div>
-</div>
-{% endfor %}
-<div class="container max-w-screen-xl flex flex-col flex-wrap items-center justify-between mx-auto p-4 prose">
-    <div class="flex flex-col md:flex-row w-full mb-48">
-        <div class="md:mr-2 md:w-1/2">
-            <h2 class='text-4xl mt-8'>{{ baslik1.content }}</h2>
-            <p class="animate-text from-left">{{ content1.content }}</p>
+            const bannerTextLineAnim = gsap.timeline({
+                defaults: {
+                    duration: 1,
+                    ease: 'power1.inOut',
+                },
+                scrollTrigger: {
+                    start: 'top top',
+                    end: 'center top',
+                    scrub: 1,
+                    pin: banner,
+                    invalidateOnRefresh: true,
+                    once: false,
+                    markers: false,
+                }
+            });
+            bannerTextLineAnim
+                .to(leftText, {
+                    x: banner.offsetWidth / 2 - leftText[0].offsetWidth / 2 + 'px',
+                });
+            bannerTextLineAnim
+                .to(rightText, {
+                        x: -(banner.offsetWidth / 2 - rightText[0].offsetWidth / 2) + 'px'
+                    },
+                    '<');
+        });
+
+    </script>
+    {% for bg in bannerBg %}
+        <div class="banner h-[100vh] top-0 flex flex-col justify-center items-start overflow-hidden bg-cover md:bg-cover bg-no-repeat bg-center relative"
+             style="background-image: url('{{ bg.image.url }}')">
+            <div class="w-full flex">
+                <p class="banner-text-left text-5xl md:text-8xl font-extrabold text-white text-shadow-sm shadow-black">
+                    Gan</p>
+            </div>
+            <div class="w-full flex justify-end">
+                <p class="banner-text-right text-5xl md:text-8xl font-extrabold text-white text-shadow-sm shadow-black">
+                    Mimarlık</p>
+            </div>
+            <div class="absolute left-1/2 -translate-x-1/2 bottom-4 flex flex-col items-center text-2xlç text-white text-shadow-sm shadow-black">
+                <p class="mb-4">Daha fazlası için kaydır.</p>
+                <i class="lni lni-arrow-down animate-bounce"></i>
+            </div>
         </div>
-        <div class="rounded md:ml-2 md:w-1/2">
-            <img src="{{ img1.img1.url }}" alt="" class="rounded object-cover w-full max-h-96 float-right animate-text from-right">
+    {% endfor %}
+    <div class="container max-w-screen-xl flex flex-col flex-wrap items-center justify-between mx-auto p-4 prose">
+        {% for item in icerik %}
+            {% if not item.id|divisibleby:2 %}
+                <div class="flex flex-col md:flex-row w-full mb-48">
+                    <div class="md:mr-2 md:w-1/2">
+                        <h2 class='text-4xl mt-8'>{{ item.title }}</h2>
+                        <p class="animate-text from-left">{{ item.content }}</p>
+                    </div>
+                    <div class="rounded md:ml-2 md:w-1/2">
+                        <img src="{{ item.image.url }}" alt="{{ item.title }}"
+                             class="rounded object-cover w-full max-h-96 float-right animate-text from-right">
+                    </div>
+                </div>
+            {% else %}
+                <div class="flex flex-col md:flex-row-reverse w-full mb-48">
+                    <div class="md:ml-2 md:w-1/2">
+                        <h2 class='text-4xl mt-8'>{{ item.title }}</h2>
+                        <p class="animate-text from-right">{{ item.content }}</p>
+                    </div>
+                    <div class="rounded md:mr-2 md:w-1/2">
+                        <img src="{{ item.image.url }}" alt="{{ item.title }}"
+                             class="rounded object-cover w-full max-h-96 float-right animate-text from-left">
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+        <div class='flex flex-col items-center mb-48'>
+            <h2 class='text-6xl animate-text from-left'>Bir projeniz mi var?</h2>
+            <a type="button" href='/contact'
+               class="animate-text from-right text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-bold rounded-3xl text-4xl px-5 py-2.5 text-center no-underline w-max">iletişime
+                geç</a>
         </div>
     </div>
-    <div class="flex flex-col md:flex-row w-full">
-        <div class="rounded md:w-1/2 md:mr-2">
-            <img src="{{ img2.img2.url }}" alt="" class="rounded object-cover w-full max-h-96 float-left animate-text from-left">
-        </div>
-        <div class="md:ml-2 md:w-1/2">
-            <h2 class='text-4xl mt-8'>{{ baslik2.content }}</h2>
-            <p class="animate-text from-right">{{ content2.content }}</p>
-        </div>
-    </div>
-    <div class='flex flex-col items-center mb-48'>
-        <h2 class='text-6xl animate-text from-left'>Bir projeniz mi var?</h2>
-        <a type="button" href='/contact' class="animate-text from-right text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-bold rounded-3xl text-4xl px-5 py-2.5 text-center no-underline w-max">iletişime geç</a>
-    </div>
-</div>
 {% endblock content %}
