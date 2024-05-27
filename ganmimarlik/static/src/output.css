@@ -1816,20 +1816,20 @@ input:checked + .toggle-bg {
   height: 100vh;
 }
 
-.max-h-96 {
-  max-height: 24rem;
-}
-
 .max-h-36 {
   max-height: 9rem;
 }
 
-.min-h-screen {
-  min-height: 100vh;
+.max-h-96 {
+  max-height: 24rem;
 }
 
 .min-h-36 {
   min-height: 9rem;
+}
+
+.min-h-screen {
+  min-height: 100vh;
 }
 
 .w-1\/2 {
@@ -2859,6 +2859,10 @@ input:checked + .toggle-bg {
 
   .lg\:max-h-64 {
     max-height: 16rem;
+  }
+
+  .lg\:min-h-64 {
+    min-height: 16rem;
   }
 
   .lg\:min-w-64 {
