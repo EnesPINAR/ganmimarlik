@@ -5,11 +5,11 @@ from django.db.models import Model
 
 # Create your models here.
 class BannerBg(models.Model):
-    image = models.ImageField(upload_to='banner/%Y/%m/%d', editable=True, verbose_name='Görsel')
+    image = models.ImageField(upload_to='banner/%Y/%m/%d', editable=True, verbose_name='Görsel', unique=True)
     def save(self, *args, **kwargs):
         if not self.pk and BannerBg.objects.exists():
             raise ValidationError(
-                "Sadece 1 adet mevcut banner bulunabilir."
+                "Sadece 1 adet mevcut ana sayfa arka planı bulunabilir."
             )
             return None
 

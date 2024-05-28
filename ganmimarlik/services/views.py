@@ -2,18 +2,18 @@ from django.shortcuts import render
 from . import models
 # Create your views here.
 def architecture(request):
-    services = models.MimarlikServisi.objects.all()
+    projects = models.MimarlikProjesi.objects.all()
     context = {
-        'services': services,
+        'projects': projects,
         'isInterior': False,
     }
-    return render(request, 'services.html', context)
+    return render(request, 'projects.html', context)
 
 def interior(request):
-    services = models.IcMimarlikServisi.objects.all()
+    projects = models.IcMimarlikProjesi.objects.all()
     
     context = {
-        'services': services,
+        'projects': projects,
         'isInterior': True,
     }
-    return render(request, 'services.html', context)
+    return render(request, 'projects.html', context)

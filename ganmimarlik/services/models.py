@@ -1,36 +1,36 @@
 from django.db import models
 
 # Create your models here.
-class MimarlikServisi(models.Model):
+class MimarlikProjesi(models.Model):
     name = models.CharField(max_length=30, editable=True, verbose_name='İsim')
     content = models.TextField(max_length=250, editable=True, verbose_name='İçerik (En fazla 250 karakter)')
 
     def __str__(self):
-        return self.name + ' Hizmeti'
+        return self.name + ' Projesi'
 
     class Meta:
-        verbose_name_plural = 'Mimarlık Hizmetleri'
+        verbose_name_plural = 'Mimarlık Projeleri'
     
-class IcMimarlikServisi(models.Model):
+class IcMimarlikProjesi(models.Model):
     name = models.CharField(max_length=30, editable=True, verbose_name='İsim')
     content = models.TextField(max_length=250, editable=True, verbose_name='İçerik (En fazla 250 karakter)')
 
     def __str__(self):
-        return self.name + ' Hizmeti'
+        return self.name + ' Projesi'
 
     class Meta:
-        verbose_name_plural = 'İç Mimarlık Hizmetleri'
+        verbose_name_plural = 'İç Mimarlık Projeleri'
 
-class MimarlikServisiGorselleri(models.Model):
-    mimarlikservisi = models.ForeignKey(MimarlikServisi, on_delete=models.CASCADE, related_name='images')
+class MimarlikProjesiGorselleri(models.Model):
+    mimarlikprojesi = models.ForeignKey(MimarlikProjesi, on_delete=models.CASCADE, related_name='images')
     img = models.ImageField(upload_to='service/%Y/%m/%d', editable=True, verbose_name='Görsel')
 
     class Meta:
-        verbose_name_plural = 'Mimarlık Hizmetleri Görselleri'
+        verbose_name_plural = 'Mimarlık Projeleri Görselleri'
 
-class IcMimarlikServisiGorselleri(models.Model):
-    mimarlikservisi = models.ForeignKey(IcMimarlikServisi, on_delete=models.CASCADE, related_name='images')
+class IcMimarlikProjesiGorselleri(models.Model):
+    icmimarlikprojesi = models.ForeignKey(IcMimarlikProjesi, on_delete=models.CASCADE, related_name='images')
     img = models.ImageField(upload_to='service/%Y/%m/%d', editable=True, verbose_name='Görsel')
 
     class Meta:
-        verbose_name_plural = 'İç Mimarlık Hizmetleri Görselleri'
+        verbose_name_plural = 'İç Mimarlık Projeleri Görselleri'
